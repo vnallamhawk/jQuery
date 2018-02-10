@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="comment">
+<span id="loading">...Loading </span>
+
+<div/>
+
+<script>
+
+ //$(document ).ready(function() {
+
+ //});
+ 
+ function loadData(){
+ 
+    var $loading = $("#loading");    
+ 
+var element = $('#comment');	
+	  $loading.show();
+   $.ajax({url: "http://localhost:8080/api",
+   success: function(result){
+   
+		      $loading.hide();
+
+		for(var i=0;i<result.length;i++){
+		element.append('<ul id=comment'+i+'>');
+	    element.append('<li id=user'+i+'>'+result[i].user+'</li>');
+		element.append('<li id=message'+i+'>'+result[i].message+'</li>');
+		
+		//element.append('<div>Rakesh</div>');
+		
+		
+		element.append('<ul	>');
+		
+		}
+		console.log(element);
+	
+    }
+	
+	
+	});
+	
+	
+	};
+	loadData();
+	
+</script>
+
+</body>
+</html>
